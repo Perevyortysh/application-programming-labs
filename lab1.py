@@ -26,9 +26,14 @@ def read_from_file(file: str) -> str:
     Returns:
         str содержимое файла
     """
-    with open(file, "r", encoding="utf-8") as f:
-        return f.read()
-
+    try:
+        with open(file, "r", encoding="utf-8") as f:
+            return f.read()
+    except FileNotFoundError:
+        print(f"Файл {file} не найден")
+    except Exception:
+        print(f"Неизвестная ошибка при прочтении файла {file}")
+    exit(1)
 
 def get_unique_woman_names(data: str) -> list[str]:
     """
