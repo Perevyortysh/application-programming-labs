@@ -1,5 +1,5 @@
 import argparse
-from image import read_image, calculate_histogram, crop_image, save_image
+from image import calculate_histogram, crop_image, read_image, save_image
 from visualization_utils import show_histogram, show_images
 
 def parse_args():
