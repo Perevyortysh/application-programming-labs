@@ -29,8 +29,8 @@ def main():
             )
             return
 
-        hist = calculate_histogram(img)
-        show_histogram(hist)
+        hist_r, hist_g, hist_b = calculate_histogram(img)
+        show_histogram(hist_r, hist_g, hist_b)
 
         new_dimensions = (args.width, args.height)
         cropped_img = crop_image(img, new_dimensions)
