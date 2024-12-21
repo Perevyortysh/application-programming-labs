@@ -4,15 +4,23 @@ import cv2
 
 def show_histogram(histogram: np.ndarray) -> None:
     """
-    Показать гистограмму
-    histogram: гистограмма для отображения
+    Показать RGB гистограмму (заполненную). 
+    hist_r: гистограмма красного канала 
+    hist_g: гистограмма зеленого канала 
+    hist_b: гистограмма синего канала
     """
     plt.figure()
-    plt.title("Гистограмма")
-    plt.xlabel("Значение")
-    plt.ylabel("Частота")
-    plt.plot(histogram)
+    plt.title(“Гистограмма изображения”) 
+    plt.xlabel(“Интенсивность пикселей”) 
+    plt.ylabel(“Частота”)
+    
+    plt.fill_between(range(256), hist_r.flatten(), color='red', alpha=0.6, label='Red РєР°РЅР°Р»')
+    plt.fill_between(range(256), hist_g.flatten(), color='green', alpha=0.6, label='Green РєР°РЅР°Р»')
+    plt.fill_between(range(256), hist_b.flatten(), color='blue', alpha=0.6, label='Blue РєР°РЅР°Р»')
+
     plt.xlim([0, 256])
+    plt.legend()
+    plt.grid(True)
     plt.show()
 
 def show_images(image1: np.ndarray, image2: np.ndarray) -> None:
