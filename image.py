@@ -19,7 +19,11 @@ def calculate_histogram(image: np.ndarray) -> np.ndarray:
     image: изображение для вычисления гистограммы
     returns: гистограмма для изображения
     """
-    return cv2.calcHist([image], [0], None, [256], [0, 256])
+    channels = cv2.split(image)
+    hist_r = cv2.calcHist([channels[2]], [0], None, [256], [0, 256])
+    hist_g = cv2.calcHist([channels[1]], [0], None, [256], [0, 256])
+    hist_b = cv2.calcHist([channels[0]], [0], None, [256], [0, 256])
+    return hist_r, hist_g, hist_b
 
 def crop_image(image: np.ndarray, new_dimensions: tuple[int, int]) -> np.ndarray:
     """
